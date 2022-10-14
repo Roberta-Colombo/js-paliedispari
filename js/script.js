@@ -44,33 +44,61 @@ dichiarare vincitore; */
 
 const iniziaBtn = document.getElementById('inizia-btn');
 const container2 = document.querySelector('.container2');
-const generaBtn = document.getElementById('genera');
 const numberResult = document.createElement('div');
 container2.append(numberResult); 
+const container3 = document.querySelector('.container3');
+const generatedNumber = document.createElement('div');
+container3.append(generatedNumber);
+   
 
 const checkNumber = function(){
     numberResult.innerHTML = ''
-    const userNumber = document.getElementById('user-number').value;
-    console.log(userNumber);
+    const userNumber = parseInt(document.getElementById('user-number').value);
 
     if(userNumber < 1 || userNumber > 5){
         numberResult.innerHTML = "Inserire un numero compreso tra 1 e 5";
     } 
     else{
         numberResult.innerHTML = "Il tuo numero è: " + userNumber;
+        
+        let min = 1;
+        let max = 5; 
+        function randomNumber(min, max){   
+            generatedNumber.innerHTML = ''
+            const risultato = parseInt(Math.floor(Math.random() * (max - min + 1) + min));
+            generatedNumber.innerHTML = "Il numero del PC è: " + risultato
+            + "<br><br>La somma è " + (risultato + userNumber);
+        
+            const evenOrOdd = document.getElementById('even-or-odd').value;
+            // console.log(evenOrOdd);
+            if((risultato + userNumber) % 2 == 0 && evenOrOdd == 'even'){
+                generatedNumber.innerHTML += ", un numero pari<br>" + "Complimenti, hai vinto!"
+            }
+            else if((risultato + userNumber) % 2 != 0 && evenOrOdd == 'odd'){
+                generatedNumber.innerHTML += ", un numero dispari<br>" + "Complimenti, hai vinto!"
+            }
+            else if((risultato + userNumber) % 2 != 0 && evenOrOdd == 'even'){
+                generatedNumber.innerHTML += ", un numero dispari<br>" + "Purtroppo hai perso. Ritenta!"
+            }
+            else if((risultato + userNumber) % 2 == 0 && evenOrOdd == 'odd'){
+                generatedNumber.innerHTML += ", un numero pari<br>" + "Purtroppo hai perso. Ritenta!"
+            }
+        }
+        console.log(randomNumber(min, max));        
     }
 }
+
 iniziaBtn.addEventListener('click', checkNumber);
 
 
-let min = 1;
-let max = 5; 
-
-function generateNumber(min, max){   
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-console.log(generateNumber());
 
 
-generaBtn.addEventListener('click', generateNumber);
+
+
+
+
+
+
+
+
 
