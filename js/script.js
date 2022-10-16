@@ -20,13 +20,66 @@ const checkWord = function(){
     // console.log(wordReverse); 
 
     if(word1 == wordReverse){
-        result.innerHTML = "è palindroma!";
-    } else{
-        result.innerHTML = "non è palindroma";
+        result.innerHTML = "<br><div>Giusto, è palindroma! Premi per giocare al secondo gioco:</div>";
+
+        const giocaBtn = document.getElementById('gioca-btn');
+        giocaBtn.className ='gioca-btn-style';
+
+        const showGame = function(){
+            container2.classList.remove('d-none');
+            container2.classList.add('show');
+            giocaBtn.classList.add('d-none');
+            container.classList.add('d-none');
+        }
+        giocaBtn.addEventListener('click', showGame);
+    } 
+    else{
+        result.innerHTML = "Purtroppo la parola da te inserita non è palindroma. Rileggi il consiglio di Maestra Orsetta :)";
     } 
 }
 
 inviaBtn.addEventListener('click', checkWord);
+
+// per alert:
+
+const trigger = document.getElementById('trigger');
+const closeBtn = document.getElementById('close-button');
+const popup = document.getElementById('alert-help');
+
+const openAlert = function(){
+    popup.classList.remove('d-none');
+    popup.classList.toggle('show');
+}
+
+const closeAlert = function(){
+    popup.classList.remove('show');
+    popup.classList.toggle('d-none');
+}
+
+trigger.addEventListener('click', openAlert);
+    
+closeBtn.addEventListener('click', closeAlert);
+
+// per alert2 (querySelectorAll non funziona???):
+
+const trigger2 = document.getElementById('trigger2');
+const closeBtn2 = document.getElementById('close-button2');
+const popup2 = document.getElementById('alert-help2');
+
+const openAlert2 = function(){
+    popup2.classList.remove('d-none');
+    popup2.classList.toggle('show');
+}
+
+const closeAlert2 = function(){
+    popup2.classList.remove('show');
+    popup2.classList.toggle('d-none');
+}
+
+trigger2.addEventListener('click', openAlert2);
+    
+closeBtn2.addEventListener('click', closeAlert2);
+
 
 /* 
 L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
@@ -46,12 +99,11 @@ const iniziaBtn = document.getElementById('inizia-btn');
 const container2 = document.querySelector('.container2');
 const numberResult = document.createElement('div');
 container2.append(numberResult); 
-const container3 = document.querySelector('.container3');
 const generatedNumber = document.createElement('div');
-container3.append(generatedNumber);
+container2.append(generatedNumber);
    
 
-const checkNumber = function(){
+const playGame = function(){
     numberResult.innerHTML = ''
     const userNumber = parseInt(document.getElementById('user-number').value);
 
@@ -65,22 +117,24 @@ const checkNumber = function(){
         let max = 5; 
         function randomNumber(min, max){   
             generatedNumber.innerHTML = ''
-            const risultato = parseInt(Math.floor(Math.random() * (max - min + 1) + min));
-            generatedNumber.innerHTML = "Il numero del PC è: " + risultato
-            + "<br><br>La somma è " + (risultato + userNumber);
-        
+            const pcNumber = parseInt(Math.floor(Math.random() * (max - min + 1) + min));
+            const somma = (pcNumber + userNumber);
+            generatedNumber.innerHTML = "Il numero del PC è: " + pcNumber
+            + "<br><br>La somma è " + somma;
+            
+
             const evenOrOdd = document.getElementById('even-or-odd').value;
             // console.log(evenOrOdd);
-            if((risultato + userNumber) % 2 == 0 && evenOrOdd == 'even'){
+            if(somma % 2 == 0 && evenOrOdd == 'even'){
                 generatedNumber.innerHTML += ", un numero pari<br>" + "Complimenti, hai vinto!"
             }
-            else if((risultato + userNumber) % 2 != 0 && evenOrOdd == 'odd'){
+            else if(somma % 2 != 0 && evenOrOdd == 'odd'){
                 generatedNumber.innerHTML += ", un numero dispari<br>" + "Complimenti, hai vinto!"
             }
-            else if((risultato + userNumber) % 2 != 0 && evenOrOdd == 'even'){
+            else if(somma % 2 != 0 && evenOrOdd == 'even'){
                 generatedNumber.innerHTML += ", un numero dispari<br>" + "Purtroppo hai perso. Ritenta!"
             }
-            else if((risultato + userNumber) % 2 == 0 && evenOrOdd == 'odd'){
+            else if(somma % 2 == 0 && evenOrOdd == 'odd'){
                 generatedNumber.innerHTML += ", un numero pari<br>" + "Purtroppo hai perso. Ritenta!"
             }
         }
@@ -88,7 +142,7 @@ const checkNumber = function(){
     }
 }
 
-iniziaBtn.addEventListener('click', checkNumber);
+iniziaBtn.addEventListener('click', playGame);
 
 
 

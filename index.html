@@ -1,36 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
     <title>Paliedispari</title>
 </head>
+
 <body>
-    <div class="container">
-        <input type="text" id="user-input">
-        <button id="invia-btn">Invia</button>
+    <header class="pt-4 mb-5 text-center text-white">
+        <h1>IMPARA GIOCANDO</h1>
+        <h3 class="text-white">per bambini tra i 4 e i 7 anni</h3>
+    </header>
+
+    <div class="wrapper text-center pt-4">
+        <div class="container mb-0">
+            <h3 class="pb-2">Le parole palindrome</h3>
+            <p>Inserisci una parola e premi il bottone. Se la parola è palindroma potrai accedere al prossimo gioco!</p>
+            <input type="text" id="user-input">
+            <button id="invia-btn" class="ms-2">Invia</button>
+
+            <div class="py-4"><i class="fa-solid fa-glasses me-2"></i>Ma cos'è una parola palindroma? </div>
+
+            <button id="trigger" class="mb-4">Chiedi a Maestra Orsetta!</button>
+
+            <div id="alert-help" class="alert alert-warning d-none d-flex align-items-center">
+                <img class="w-25" src="./img/bear-teacher.png" alt="Maestra Orsetta">
+                <p class="px-2"><strong>Tip!</strong> Si dice palindroma una parola che può essere letta in entrambi i sensi (da sinistra a destra o da destra a sinistra) senza perdere di significato.</p>
+
+                <button id="close-button">&times;</button>
+            </div>
+        </div>
+
+        <button id="gioca-btn" class="d-none mt-1">Gioca</button>
+
+        <div class="container2 d-none mt-5">
+            <h3 class="pb-2">I numeri pari e dispari</h3>
+            <p>Scegli: pari o dispari?</p>
+            <select name="even-or-odd" id="even-or-odd">
+                <option value="even">Pari</option>
+                <option value="odd">Dispari</option>
+            </select>
+            <br>
+            <br>
+            <div class="py-4"><i class="fa-solid fa-glasses me-2"></i>Sai cosa rende un numero pari o dispari?</div>
+
+            <button id="trigger2" class="mb-4">Chiedi a Maestra Orsetta!</button>
+
+            <div id="alert-help2" class="alert alert-warning d-none d-flex align-items-center">
+                <img class="w-25" src="./img/bear-teacher.png" alt="Maestra Orsetta">
+                <p class="px-2"><strong>Tip!</strong> Un numero si dice pari quando è divisibile per 2 (il resto sarà sempre 0). In caso contrario si tratta di un numero dispari.</p>
+
+                <button id="close-button2">&times;</button>
+            </div>
+
+            <p class="w-75 text-center mx-auto mt-3">Inserisci un numero compreso tra 1 e 5 e premi "Inizia". Anche il PC sceglierà un numero compreso tra 1 e 5, il quale sarà sommato al tuo.
+            Scopo del gioco è indovinare se la somma dei due numeri sarà pari o dispari.
+            </p>
+            <input id="user-number" type="number">
+            <button id="inizia-btn">Inizia</button>
+        </div>
     </div>
 
-    <div class="container2"> 
-        <br>
-        <h3>Scegli: pari o dispari?</h3>
-        <select name="even-or-odd" id="even-or-odd">
-            <option value="even">Pari</option>
-            <option value="odd">Dispari</option>
-        </select>
-
-        <h3>Inserisci un numero compreso tra 1 e 5:</h3>
-        <input id="user-number" type="number">
-        <button id="inizia-btn">Inizia</button>
-    </div>
-
-    <div class="container3">
-        <br>
-        <h3>Fai generare numero al PC e scopri se hai vinto:</h3>
-    </div>
-
-    
     <script src="./js/script.js"></script>
 </body>
+
 </html>
